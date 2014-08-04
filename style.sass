@@ -8,7 +8,7 @@ $error-bg: #fee
 
 body
   margin: 0
-  padding: calc(1em + 20px) 10%
+  padding: calc(1em + 20px) 0 0 0
   color: #333
   background-color: $background
   font-size: 14px
@@ -31,8 +31,6 @@ pre
     overflow-y: hidden
     overflow-x: auto
 
-  border: 1px solid #D0E0EB
-  background: #fff
   .CodeMirror-linenumber
     font-size: 12px
 
@@ -47,7 +45,7 @@ pre
 
   .CodeMirror-gutters
     border: none
-    background: transparent
+    background: #f0f0f0
 
     .error
       width: 4px
@@ -73,9 +71,20 @@ pre
   z-index: 10000000
 
 .document
+  display: table
+  border-collapse: collapse
+  empty-cells: show
+  width: 100%
+
+  .io
+    display: table-row
+
   .cell
-    margin-bottom: 20px
+    display: table-cell
+    vertical-align: top
     position: relative
+    border-bottom: 1px solid #eee
+    border-top: 1px solid #eee
 
     // docs pulled from sphinx
     dl
@@ -92,36 +101,29 @@ pre
         p, pre
           margin: 0.5em 0
 
-.input.cell, .output.cell
-  &[data-cell-number]::before
-    position: absolute
-    right: 100%
-    padding: 8px 12px
-    font-family: $monospace
-    line-height: 1.6em
-    color: #ddd
-
 .input.cell
-  .permalink
+  min-width: 600px
+  width: 40%
+  border-right: 1px solid #eee
+  background: white
+  margin-bottom: 1em
+
+  .input-menu
     position: absolute
-    left: calc(100% + 1em)
+    top: 0
+    right: 0
+    padding: 5px
     color: #ddd
     text-decoration: underline
     cursor: pointer
+    z-index: 10
 
   &[data-cell-number]::before
     // content: 'In[' attr(data-cell-number) ']'
 
 .output.cell
-  &[data-cell-number]::before
-    // content: 'Out[' attr(data-cell-number) ']'
-
-  .close::before
-    content: '×'
-    position: absolute
-    right: 10px
-    font-weight: bold
-    color: #ddd
+  min-width: 600px
+  padding: 5px 0
 
   padding-left: 16px
   padding-right: 16px

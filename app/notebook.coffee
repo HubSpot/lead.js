@@ -216,8 +216,9 @@ InputCellComponent = React.createIdentityClass
   get_observable: -> @props.cell.changes
   render: ->
     React.DOM.div {className: 'cell input', 'data-cell-number': @props.cell.number},
-      React.DOM.span({className: 'permalink', onClick: @permalink_link_clicked}, 'link'),
-      React.DOM.div({className: 'code', ref: 'code'})
+      React.DOM.div({className: 'code', ref: 'code'}),
+      React.DOM.div {className: 'input-menu'},
+        React.DOM.span({className: 'permalink', onClick: @permalink_link_clicked}, 'link')
 
   componentDidMount: ->
     editor = @props.cell.editor
